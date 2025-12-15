@@ -1,5 +1,5 @@
 services:
-  jenkins:
+  controller:
     build:
       context: .
       dockerfile: Dockerfile
