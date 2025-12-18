@@ -10,6 +10,7 @@ plugins:
   - artifactId: github
   - artifactId: github-branch-source
   - artifactId: junit
+  - artifactId: matrix-auth
   - artifactId: maven-plugin
   - artifactId: mock-security-realm
   - artifactId: parameterized-trigger
