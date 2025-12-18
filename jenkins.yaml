@@ -16,9 +16,46 @@ jenkins:
     globalMatrix:
       entries:
       - group:
+          name: "admin_group"
+          permissions:
+          - "Overall/Administer"
+      - group:
           name: "authenticated"
           permissions:
           - "Overall/Administer"
+      - group:
+          name: "browser_group"
+          permissions:
+          - "Overall/Read"
+      - group:
+          name: "dev_group"
+          permissions:
+          - "Agent/Build"
+          - "Agent/Configure"
+          - "Agent/Connect"
+          - "Agent/Create"
+          - "Agent/Disconnect"
+          - "Artifactory/Promote"
+          - "Artifactory/Release"
+          - "Credentials/Create"
+          - "Credentials/View"
+          - "Job/Build"
+          - "Job/Cancel"
+          - "Job/Configure"
+          - "Job/Create"
+          - "Job/Delete"
+          - "Job/Discover"
+          - "Job/Move"
+          - "Job/Read"
+          - "Job/Workspace"
+          - "Overall/Read"
+          - "Run/Delete"
+          - "Run/Update"
+          - "SCM/Tag"
+          - "Support/DownloadBundle"
+          - "View/Configure"
+          - "View/Create"
+          - "View/Read"
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: false
@@ -27,6 +64,7 @@ jenkins:
   - "hudson.util.DoubleLaunchChecker"
   labelAtoms:
   - name: "built-in"
+  - name: "inbound"
   log: {
     }
   markupFormatter: "plainText"
@@ -42,6 +80,12 @@ jenkins:
       freeSpaceThreshold: "1GiB"
       freeSpaceWarningThreshold: "2GiB"
   - "responseTime"
+  nodes:
+  - permanent:
+      launcher: "inbound"
+      name: "inbound"
+      remoteFS: "/home/jenkins/agent"
+      retentionStrategy: "always"
   numExecutors: 2
   primaryView:
     all:
@@ -186,7 +230,6 @@ unclassified:
       credentialsConfig:
         ignoreCredentialPluginDisabled: true
         overridingCredentials: false
-        password: "{AQAAABAAAAAQDnaEtS8RHn7uYSeWHV6f7cNfhdoHgcZ1cCmdtVNeB1A=}"
         username: "****"
       timeout: 300
     useCredentialsPlugin: false
