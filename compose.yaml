@@ -1,4 +1,15 @@
 services:
+  casc-init:
+    image: alpine
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - ./jenkins.yaml:/tmp/jenkins.yaml
+    command: >
+      sh -c "
+        mkdir -p /var/jenkins_home/casc_configs &&
+        cp /tmp/jenkins.yaml /var/jenkins_home/casc_configs/
+      "
+
   controller:
     build:
       context: .

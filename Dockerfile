@@ -12,7 +12,8 @@ ENV JAVA_OPTS="\
 -XX:+LogVMOutput \
 -Xmx2g \
 -Dfile.encoding=UTF-8 \
--Djenkins.install.runSetupWizard=false"
+-Djenkins.install.runSetupWizard=false \
+-Dcasc.jenkins.config=/var/jenkins_home/casc_configs/"
 
 COPY plugins.yaml .
 
